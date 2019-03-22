@@ -37,21 +37,10 @@ class Quiz extends Component {
       }
       return (
         <div className="react-quiz-container">
-          {!this.state.start &&
-            <div>
-              <h2>{quiz.quizTitle}</h2>
-              <div>{quiz.questions.length} Questions</div>
-              { quiz.quizSynopsis && 
-                  <div className="quiz-synopsis">
-                      {quiz.quizSynopsis}
-                  </div> 
-              }
-              <div className="startQuizWrapper">
-                <button onClick={() => this.start()} className="startQuizBtn btn">Start Quiz</button>
-              </div>
-            </div>
+          
+          {
+             !this.state.start && this.props.customIntroPage(quiz, startQuiz:  this.start)
           }
-
           {
             this.state.start && <Question questions={questions} showDefaultResult={showDefaultResult} onComplete={onComplete} customResultPage={customResultPage}/>
           }
